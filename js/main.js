@@ -16,8 +16,8 @@ var enemyExplodeSound;
 var spaceshipExplodeSound;
 var spaceshipShootSound;
 var enemyHitSound;
-const menuSound = "space-120280.mp3";
-const gameSound = "cyberpunk-2099-10701.mp3";
+const menuSound = "audio/space-120280.mp3";
+const gameSound = "audio/cyberpunk-2099-10701.mp3";
 var music;
 
 var healthBar;
