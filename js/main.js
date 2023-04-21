@@ -224,7 +224,7 @@ function pauseOrplay(){
             timePassed++;
 
             if(increaseCount < 4 && timePassed % 5000 == 0){
-                increaseSpeed(0.2);
+                increaseSpeed(0.35);
                 increaseCount++;
             }
         }, 5);
