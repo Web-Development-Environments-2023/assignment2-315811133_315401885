@@ -19,10 +19,12 @@ var brigade_cols;
 function setupEnemy(b_r, b_c){
     brigade_rows = b_r;
     brigade_cols = b_c;
-    
+    enemySpaceshipSpeed = 2;
     enemyShots = [];
     enemyBullet = null;
     enemeis_killed = 0;
+    
+    enemyBullet = {x: space.width / 2, y: space.height};
 
     brigade = createBrigade(b_r, b_c);
 }
