@@ -31,6 +31,14 @@
     0 0 151px rgb(194, 187, 187);
 }
 
+@keyframes background-pan {
+    from {
+        background-position: 0% center;
+    }
+    to {
+        background-position: 200% center;
+    }
+}
 
 body {
     height: 96vh;
