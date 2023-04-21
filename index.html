@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/gamestyle.css" type="text/css">
+    <link rel="stylesheet" href="css/menu.css" type="text/css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/space.js" defer></script>
+    <script type="text/javascript" src="js/spaceship.js"></script>
+    <script type="text/javascript" src="js/enemeis.js"></script>
+    <script type="text/javascript" src="js/menu.js"></script>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    
+    
+<title>Something Invaders</title>
+</head>
+<body>
+    <canvas id="space"></canvas>
+    <audio id = "spaceshipExplosion" preload = "auto">
+        <source src = "audio/explosion.wav" type = "audio/mpeg"></audio>
+     <audio id = "spaceshipShoot" preload = "auto">
+        <source src = "audio/shoot.wav" type = "audio/mpeg"></audio>
+     <audio id = "enemyKilled" preload = "auto">
+        <source src = "audio/invaderkilled.wav" type = "audio/mpeg"></audio>
+    <audio id = "enemyHit" preload = "auto">
+        <source src = "audio/fastinvader3.wav" type = "audio/mpeg"></audio>
+    <audio id = "music" >
+        <source id="music-source" src = "audio/space-120280.mp3" type = "audio/mp3" ></audio>
+
+
+    <div id="welcome-screen" style="display:grid; grid-template-rows: auto auto auto; place-items: start center; z-index: 2; width: 100%; height: 100%;">
+        <h1 id="title-ci" >
+            <span class="magic">
+                <span class="magic-text">
+                    <img src="images/icons8-space-64.png"> Something<br>&nbsp&nbsp &nbsp Invaders
+                </span>
+            </span>
+            
+        </h1>
+        <div style="color:azure;z-index: 2; text-shadow: var(--text-shadow1); " >
+            <h2>Eden Abuhatzeira 315811133</h2>
+            <h2>&nbsp Shelley Kerpel 315401885</h2>
+        </div>
+        <div>
+            <input type="button" style="position: relative; font-size: 20px; height: fit-content" class="card" value="login"  onclick="containerToggle();loginToggle();welcomeToggle()">
+            <input type="button" style="position: relative; font-size: 20px; height: fit-content" class="card" value="Register"  onclick="containerToggle();signInToggle();welcomeToggle();">
+        </div>
+    </div>
+
+    <div id="container"  style="display: none">  
+    <div id="header">
+        <!-- <div class="header-section">Logo</div>
+        <div class="header-section">Something Invaders</div>
+        <div class="header-section">Hello</div> -->
+        <img src="images/icons8-space-64.png" style="width: 48px; height: 48px;">
+        <p id="header-title">Something Inavders</p>
+        <p id="hello-user" style="margin-right: 5px;">Hello</p>
+        <!-- <button id="menu-toggle" type="button" onclick="menuToggle(true)" class="card toggle-bt">Main menu</button>
+        <button id="sign-in" type="button" onclick="signInToggle()" class="card toggle-bt">Register</button>
+        <button id="login" type="button" onclick="loginToggle()" class="card toggle-bt">Login</button> -->
+    </div>
+
+    <div id="content">
+    <div id="login-screen" style="display: none">
+        <h1 style="color:white; top: -55%; left: 35%;">Login</h1>
+        <form id="login">
+            <label id="login-msg"></label>
+            <label>Username: </label>
+            <input type="text" class="input-space" id="connect-username" value="p">
+            <label>Password: </label>
+            <input type="password" class="input-space" id="connect-password" value="testuser">
+            <input type="button" style="position: relative; font-size: 20px;" class="card"  value="Connect" onclick="Connect()">
+            <input type="button" style="position: relative; font-size: 20px;" class="card" value="Register"  onclick="signInToggle();loginToggle()">
+        </form>
+    </div>
+
+    <div id="configure" style="display: none;">
+        <div>
+         <label for="fire-input">Fire Key</label>
+            <input type="text" id="fire-input"  class="input-space" id="fireButton-input"  value="Space" >
+        </div>
+        <div>
+            <label for="timer-setup">Round Time</label>
+            <select class="card" style="width:max-content; height: max-content;" id="timer-setup">
+                <option>2:00</option>
+                <option>2:30</option>
+                <option>3:00</option>
+                <option>3:30</option>
+                <option>4:00</option>
+                <option>4:30</option>
+                <option>5:00</option>
+            </select>
+        </div>
+        <div>
+        <label for="spaceship-color">Spaceship color</label>
+            <select class="card" style="width:max-content; height: max-content;" id="spaceship-color">
+                <option style="background-color: orange;">Orange</option>
+                <option style="background-color: blue;">Blue</option>
+                <option style="background-color: green;;">Green</option>
+                <option style="background-color: yellow;">Yellow</option>
+                <option style="background-color: red;;">Red</option>
+            </select>
+        </div>
+        <input type="button" class="card" onclick="configure()" value="Apply selection" style="font-size: 30px; height:fit-content;">
+    </div>
+    
+    <div id="sign-in-screen" style="display: none;">
+        <form id="sign-in">
+            <label id="username-label">Username: </label>
+            <input type="text" class="input-space" id="username-input">
+            <label id="password1-label">Password:</label>
+            <input type="password" class="input-space" id="password1-input">
+            <label id="password2-label">Verify Password:</label>
+            <input type="password" class="input-space" id="password2-input">
+            <label id="first-name-label">First Name: </label>
+            <input type="text" class="input-space" id="first-name-input">
+            <label id="last-name-label">Last Name: </label>
+            <input type="text" class="input-space" id="last-name-input">
+            <label id="email-label">Email: </label>
+            <input type="text" class="input-space" id="email-input">
+            <label>Birthdate:</label>
+            <input autocomplete="off" class="text" id="MoveInDate" name="MoveInDate" placeholder="DD-MM-YYYY" type="date" spellcheck="false">
+            <input type="button" class="card" onclick="Register()" value="Register">
+            <button type="button" class="card" onclick="backLoginScreen()">Back</button>
+        </form>
+    </div>
+
+
+    <div id="main-menu" style="display: none;">
+        <h1 id="title-ci">
+            <span class="magic">
+                <span class="magic-text">
+                    Something<br>&nbsp &nbsp &nbsp &nbsp Invaders
+                </span>
+            </span>
+            </h1>
+        <div id="menu">
+            <div class="card" id="start-game-bt" onclick="startGame()">Start Game</div>
+            <div class="card" id="options-bt" onclick="configureToggle();menuToggle(false);">Options</div>
+            <div class="card" id="about-bt" onclick="aboutToggle()">About</div>
+            <div class="card" id="scoreboard-bt" onclick="scoreboardToggle()">Scoreboard</div>
+            <div class="card" id="login-bt" onclick="menuToggle();loginToggle();">Login</div>
+        </div>
+    </div>
+        
+    <div id="about-modal" class="modal" style="display: none;">
+        <div id="about" class="modal-content">
+            <span id="about-exit" onclick="aboutToggle()">X</span>
+            <h1>About</h1>
+            <p>
+                Hello our name is Eden & Shelly<br>
+                We've created this game for universty project<br>
+                Developing In network enivroments.
+            </p>
+        </div>
+    </div>
+
+    <div id="scoreboard" class="modal" style="display: none;">
+        <div class="modal-content">
+            <table id="scoreboard-tb">
+                <th>Username</th>
+                <th>Score</th>
+                <th>Time</th>
+                <th>Life</th>
+            </table>
+        </div>
+    </div>
+    </div>
+    
+    <div id="footer">
+        <div>Eden Abuhtzeira<br>Shelley Kerpel</div>
+        <div>edenabu@post.bgu.ac.il<br>shelleyk@post.bgu.ac.il</div>
+    </div>
+    </div>
+
+    <div id="game" style="display: none;">
+        <div id="score">Score:</div>
+        <div id="timer"></div>
+        <div id="health">🚀🚀🚀</div>
+        <button id="reset" onclick="pauseOrplay();startGame()" >Reset</button>
+        <button id="play" onclick="pauseOrplay()" class="card" style="display: none;">Play</button>  
+
+    </div>
+
+    <div id="endGame" class="modal" style="display: none;">
+        <div id="endGame-content" class="modal-content" style="width: fit-content">Hello world</div>
+    </div>
+
+</body>
+<script>
+   
+</script>
+
+</html>

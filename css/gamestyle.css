@@ -1,0 +1,60 @@
+:root{
+
+    --poistion: 200px;
+    --text-shadow: 
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #0fa,
+    0 0 82px #0fa,
+    0 0 92px #0fa,
+    0 0 102px #0fa,
+    0 0 151px #0fa;
+
+}
+
+#game{
+    position: fixed;
+    top: 10px;
+
+    display: flex;
+    justify-content: space-between;
+    
+    height: auto;
+    width: 100%;
+
+    color: white;
+    text-shadow: var(--text-shadow);
+    
+    font-size: 21px;
+    z-index: 1;
+}
+
+#play {
+    position:fixed;
+
+    bottom: 30px;
+    left: 10px;
+
+    height: 30px;
+    width: 40px;
+}
+
+#reset {
+    position:fixed;
+
+    bottom: 0;
+    left: 5;
+
+    font-size: clamp(20px, 10%, 30px);
+    width: fit-content;
+    height: fit-content;
+}
+
+#endGame{
+    color: red;
+    font-size: 60px;
+    text-shadow: var(--text-shadow);
+
+    font-family: fantasy;
+}
