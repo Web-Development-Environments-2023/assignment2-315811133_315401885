@@ -273,7 +273,7 @@ function handleEvents(){
             endgameDisplayContent.style.color = "green";
             endgameToggle(); // won
         }else{
-            endgameDisplayContent.innerHTML = `You Can Do Better ¯\_(ツ)_/¯<br>Score: ${score}`;
+            endgameDisplayContent.innerHTML = `You Can Do Better<br> ¯\_(ツ)_/¯<br>Score: ${score}`;
             endgameDisplayContent.style.color = "Red";
             endgameToggle(); // lost
         }
