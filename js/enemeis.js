@@ -30,8 +30,8 @@ function setupEnemy(b_r, b_c){
 }
 
 function increaseSpeed(upSpeed){
-    enemyFireSpeed = enemyFireSpeed*upSpeed;
-    enemySpaceshipSpeed = enemySpaceshipSpeed*upSpeed;
+    enemyFireSpeed = enemyFireSpeed + upSpeed;
+    enemySpaceshipSpeed = enemySpaceshipSpeed + upSpeed;
 }
 
 function createBrigade(rows, cols){
