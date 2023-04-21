@@ -1,5 +1,19 @@
 var currentUser;
 
+
+window.addEventListener(
+    "keydown",
+    (event) => {
+        if(event.code == "Escape" && aboutModal.style.display == ""){
+            aboutToggle();
+        }
+
+        else if(event.code == "Escape" && scoreboardDisplay.style.display == ""){
+            scoreboardToggle();
+        }
+            
+    });
+
 const getAccounts = function() {
     return JSON.parse(localStorage.getItem("Accounts"));
 }
