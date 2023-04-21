@@ -43,6 +43,7 @@ const Connect = () => {
     msg.innerHTML = "";
     currentUser = account;
     hello.innerText = `Hello, ${username.value}`;
+    $('#scoreboard-tb tr:not(:first)').remove();
     scoreboard = [];
     configureToggle();
     loginToggle();
